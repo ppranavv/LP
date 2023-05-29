@@ -1,0 +1,36 @@
+APEX
+
+// Apex class to reverse a string in Salesforce.com
+public class ReverseStringController {
+    public String inputString { get; set; } // Declaration of inputString variable
+    public String reversedString { get; set; } // Declaration of reversedString variable
+    
+    // Method to reverse a string
+    public void reverseString() {
+        reversedString = '';
+        
+        // Iterate through each character in the input string in reverse order
+        for (Integer i = inputString.length() - 1; i >= 0; i--) {
+            reversedString += inputString.substring(i, i+1);
+        }
+    }
+}
+
+
+visualforce
+<apex:page controller="ReverseStringController">
+    <apex:form>
+        <apex:pageMessages />
+        <apex:inputText value="{!inputString}" id="inputString" />
+        <apex:commandButton value="Reverse String" action="{!reverseString}" rerender="result" />
+    </apex:form>
+    <apex:outputPanel id="result">
+        <apex:outputText value="Input String: {!inputString}" />
+        <br/>
+        <apex:outputText value="Reversed String: {!reversedString}" />
+    </apex:outputPanel>
+</apex:page>
+
+
+url
+https://abcsandbox167-dev-ed--c.develop.vf.force.com/apex/ReverseStringController

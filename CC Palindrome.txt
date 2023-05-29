@@ -1,0 +1,43 @@
+apex
+
+public class PalindromeController {
+    public String inputString { get; set; }
+    public Boolean isPalindrome { get; set; }
+    public Boolean showResult { get; set; }
+    
+    public void checkPalindrome() {
+        // Remove any non-alphanumeric characters and convert to lowercase
+        String cleanedInput = inputString.replaceAll('[^a-zA-Z0-9]', '').toLowerCase();
+        
+        Integer length = cleanedInput.length();
+        isPalindrome = true;
+        
+        for (Integer i = 0; i < length / 2; i++) {
+            if (cleanedInput.charAt(i) != cleanedInput.charAt(length - i - 1)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        
+        showResult = true;
+    }
+}
+
+
+
+visualforce page
+<apex:page controller="PalindromeController">
+    <apex:form>
+        <apex:inputText value="{!inputString}" label="Enter a string"/>
+        <apex:commandButton value="Check Palindrome" action="{!checkPalindrome}"/>
+    </apex:form>
+    <apex:outputPanel rendered="{!showResult}">
+        <p>Input: {!inputString}</p>
+        <p>Is Palindrome? {!isPalindrome}</p>
+    </apex:outputPanel>
+</apex:page>
+
+
+
+url
+https://abcsandbox167-dev-ed--c.develop.vf.force.com/apex/PalindromeController

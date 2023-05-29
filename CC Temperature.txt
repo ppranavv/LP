@@ -1,0 +1,22 @@
+public class TemperatureConversion {
+    
+    // Method to convert temperature from Celsius to Fahrenheit
+    public static Decimal celsiusToFahrenheit(Decimal celsius) {
+        return (celsius * 9/5) + 32;
+    }
+    
+    // Example usage in Salesforce trigger or controller
+    public static void exampleUsage(Decimal celsiusTemperature) {
+        Decimal fahrenheitTemperature = celsiusToFahrenheit(celsiusTemperature);
+        
+        System.debug('Celsius: ' + celsiusTemperature);
+        System.debug('Fahrenheit: ' + fahrenheitTemperature);
+        
+        // You can then use the Fahrenheit temperature in your Salesforce logic or display it on the page
+    }
+}
+
+// Execute the temperature conversion example by taking input from the user
+Decimal userInput = 25.0; // Replace this line with code to get input from the user
+
+TemperatureConversion.exampleUsage(userInput);
